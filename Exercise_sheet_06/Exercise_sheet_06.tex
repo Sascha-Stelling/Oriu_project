@@ -33,7 +33,7 @@
 	\\Label images from a set of labels with the assumption that that each images can only get labelled by one class
 	\item \textbf{Dataset:} Tiny ImageNet
 	\item \textbf{Approach:} Extract features from an input image into a learned filterbank using CNNs containing convolution layers,  PReLU\footnote{\url{https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf?spm=5176.100239.blogcont55892.28.pm8zm1&file=He_Delving_Deep_into_ICCV_2015_paper.pdf}} as an activation function and pooling layers and pooling layers using max pooling to reduce the output size for the next neuron and because the exact location of a feature is less important than the rough location relative to other features. 
-	For the first layer extract edges using a Harris detector.
+	To detect features in the first convolution layer we use the Scale-Invariant Feature Transform (SIFT)\footnote{\url{text}} which computes the Difference of Gaussians (DoG)\footnote{\url{http://micro.magnet.fsu.edu/primer/java/digitalimaging/processing/diffgaussians/index.html}}.DoG is used to detect blobs by subtracting two blurred images from another with different Gaussian kernels. The maxima and minima of this operation are used as key feature locations for the next neurons.
 	\item \textbf{Evaluation $\mathbf{\&}$ Expected  Results:} Calculate training error and minimize it while maximizing accuracy. We hope to get an accuracy of at least 0.7
 	\item \textbf{Hardware:}
 	\item \textbf{Excluded Presentation Date:}	
