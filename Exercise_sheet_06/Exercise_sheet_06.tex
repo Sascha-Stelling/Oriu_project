@@ -1,0 +1,42 @@
+\documentclass[10pt,a4]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\author{Shivali Dubey, Sascha Stelling}
+\title{Object Recognition and Image Understanding Exercise Sheet 6}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Question 1}
+\begin{itemize}
+	\item \textbf{Team:} \\Shivali:
+	\begin{itemize}
+		\item Implementation
+		\item Neural network setup
+	\end{itemize}
+	Sascha:
+	\begin{itemize}
+		\item Implementation
+		\item Preparation of the dataset
+		\item Running training phase
+	\end{itemize}
+	\item \textbf{Problem Definition:} \textit{Object detection and multiclass image classification.}
+	\\Label images from a set of labels with the assumption that that each images can only get labelled by one class
+	\item \textbf{Dataset:} Tiny ImageNet
+	\item \textbf{Approach:} Extract features from an input image into a learned filterbank using CNNs containing convolution layers,  PReLU\footnote{\url{https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf?spm=5176.100239.blogcont55892.28.pm8zm1&file=He_Delving_Deep_into_ICCV_2015_paper.pdf}} as an activation function and pooling layers and pooling layers using max pooling to reduce the output size for the next neuron and because the exact location of a feature is less important than the rough location relative to other features. 
+	For the first layer extract edges using a Harris detector.
+	\item \textbf{Evaluation $\mathbf{\&}$ Expected  Results:} Calculate training error and minimize it while maximizing accuracy. We hope to get an accuracy of at least 0.7
+	\item \textbf{Hardware:}
+	\item \textbf{Excluded Presentation Date:}	
+\end{itemize}
+
+\end{document}
