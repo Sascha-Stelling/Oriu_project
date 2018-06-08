@@ -20,14 +20,16 @@
 \begin{itemize}
 	\item \textbf{Team:} \\Shivali:
 	\begin{itemize}
-		\item Implementation
-		\item Neural network setup
+		\item Defining PReLU function
+		\item Training of datasets (backpropagation)
+		\item testing (result from Euclidean loss objective function)
+		\item Reducing overfitting
 	\end{itemize}
 	Sascha:
 	\begin{itemize}
-		\item Implementation
-		\item Preparation of the dataset
-		\item Running training phase
+		\item Convolution filters
+		\item Training of dataset (feed forward)
+		\item Testing (results from multinomial logistic regression)
 	\end{itemize}
 	\item \textbf{Problem Definition:} \textit{Object detection and image classification} has various applications, for instance, in self-driving cars to detect and classify pedestrians, motorcycles, trees, bicycles etc; classification of features on the Earth such as roads, rivers, agricultural fields etc using satellite images. With the advancements in deep learning, every year, new algorithms/ models keep on outperforming the previous ones, to achieve the best possible accuracies for image classification. One of the most popular dataset used is the ImageNet dataset. In our project we propose to implement the deep learning algorithms based on a few selected studies [1,2,3] with the aim to attain the best possible classification accuracy.
 	
@@ -44,15 +46,31 @@
 		\item Backpropagation: We use gradient descent method for optimization algorithm which is thus used for learning and training.
 	\end{itemize}
 	
+	\textbf{Reducing Overfitting:} As studied in previous research works (Imagenet class), we perform data augmentation and dropout to reduce overfitting. Data augmentation refers to artificially enlarging image size using augmentation. Dropout refers to dropping out the output of each hidden neuron with probability 0.5 and less, such that the respective neuron can't participate in backpropagation [5]. 
+	\\\textbf{Training:} The image is first cropped representing an object part or a small object. The training is carried out by optimising the multinomial Euclidian loss (for bounding box representation, otherwise regression is more common) objective function using mini-batch gradient-descent (based on back-propagation) [3,4,5]. 
+	\\\textbf{Testing:} At test time, we have a trained dataset and an input image. The fully connected layers are converted to convolutional layers resulting into a Fully Convolutional (FC) network. During training, the images are cropped, however during testing the FC network is applied on the entire image. The result is a bounding box location prediction [3,5].
+	Note: We could also train our dataset by optimising the multinomial logistic regression objective function. In this case, the testing would result in a class score map with the number of channels equal to the number of classes [4,5].
+	Results and Evaluation: We expect our output images to be classified and represented with box bounded objects. The results can be quantitatively evaluated by calculating the top 1 and top 5 test set error rates as done in previous studied [1,2,3,5]. The qualitative evaluation can be performed by selecting 5 most probable class for a given object in an image and computing their probabilities. 
+	
+	
 	\newpage
-	\item \textbf{Evaluation $\mathbf{\&}$ Expected  Results:} Reducing Overfitting: As studied in previous research works\footnote{\url{http://cs229.stanford.edu/proj2014/Xiaodong\%20Zhou,\%20Supervised\%20DeepLearning\%20For\%20MultiClass\%20Image\%20Classification.pdf}} , we perform data augmentation and dropout to reduce overfitting. Data augmentation refers to artificially enlarging image size using augmentation. Dropout refers to dropping out the output of each hidden neuron with probability 0.5, such that the respective neuron can't participate in backpropagation. 
-	\\Training: The training is carried out by optimising the multinomial logistic regression objective function using mini-batch gradient-descent (based on back-propagation)(Lecunn, imagenet class).
-	\\We try to achieve at least 70$\%$ accuracy with our algorithm.
+	\item \textbf{Evaluation $\mathbf{\&}$ Expected  Results:} We expect our output images to be classified and represented with box bounded objects. The results can be quantitatively evaluated by calculating the top 1 and top 5 test set error rates as done in previous studied [1,2,3,5]. The qualitative evaluation can be performed by selecting 5 most probable class for a given object in an image and computing their probabilities. 
 	
 	\item \textbf{Hardware:} We plan to use our own PCs for this task having the following specifications:
 	Intel Core i5-3350P @ 3.1GHz, 12GB DDR3, Nvidia GTX 970, 128GB SSD
 	
 	\item \textbf{Excluded Presentation Date:} None
+	
+	\item \textbf{References:}
+	\begin{itemize}
+		\item Girshick, R., Donahue, J., Darrell, T., Malik, J. Rich feature hierarchies for accurate object detection and semantic segmentation. Tech Report (V5). UC Berkeley. October, 2014.
+		\item He, K., Zhang, X., Ren, S., Sun, J. Delving Deep into Rectifiers: Surpassing Human-level Performance on ImageNet Classification. Microsoft Research. February, 2015.
+		\item Krizhevsky, A., Sutskever, I., and Hinton, G. E. ImageNet classification with deep convolutional neural networks. In NIPS, pp. 1106–1114, 2012.
+		\item LeCun, Y., Boser, B., Denker, J. S., Henderson, D., Howard, R. E., Hubbard, W., and Jackel, L. D. Backpropagation applied to handwritten zip code recognition. Neural Computation, 1(4):541–551, 1989.
+		\item 
+		Simonyan, K. and Zisserman, A. Very deep convolutional networks for large-scale image recognition. arXiv:1409.1556, 2014.
+		
+	\end{itemize}
 \end{itemize}
 
 \end{document}
