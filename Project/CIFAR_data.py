@@ -7,13 +7,14 @@
 import skimage.io as io
 import mxnet as mx
 import numpy as np
-import _pickle
+import cPickle as _pickle
 from skimage import color
 import numpy as np
 
+
 def extractImagesAndLabels(path, file):
     f = open(path+file, 'rb')
-    dict = _pickle.load(f,encoding='latin1')
+    dict = _pickle.load(f)
     images = dict['data']
     images = np.reshape(images, (10000, 3, 32, 32))
     labels = dict['labels']
@@ -34,19 +35,18 @@ def saveCifarImage(array, path, file):
     # save to PNG file
     return io.imsave(path+file+".png", array)
 
-imgarray, lblarray = extractImagesAndLabels("cifar-10-batches-py/", "data_batch_1")
+#imgarray, lblarray = extractImagesAndLabels("cifar-10-batches-py/", "data_batch_1")
 #print (imgarray)
-print (imgarray.shape)
-print (lblarray.shape)
+#print "Image array shape: " , (imgarray.shape)
+#print "Label array shape: " , (lblarray.shape)
 
-categories = extractCategories("cifar-10-batches-py/", "batches.meta")
+#categories = extractCategories("cifar-10-batches-py/", "batches.meta")
 
-cats = []
-for i in range(0,10):
-    saveCifarImage(imgarray[i], "./", "image"+(str)(i))
-    category = lblarray[i].asnumpy()
-    category = (int)(category[0])
-    cats.append(categories[category])
+#cats = []
+#for i in range(0,10):
+#    saveCifarImage(imgarray[i], "./", "image"+(str)(i))
+#    category = lblarray[i].asnumpy()
+#    category = (int)(category[0])
+#    cats.append(categories[category])
     
-print (cats)
-
+#print (cats)
