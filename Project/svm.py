@@ -4,6 +4,10 @@ from CIFAR_data import extractImagesAndLabels
 import numpy as np
 
 def svmClassification(X, y, desc):
+    print "Starting SVM classification..."
+    clf = svm.SVC()
+    clf.fit(X[0:5], y[0:5])
+    print "Finished SVM classification!"
     return
     
 
