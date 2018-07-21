@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+
 from CIFAR_data import extractImagesAndLabels
 import matplotlib.pyplot as plt
 
@@ -19,10 +20,10 @@ def computeHOGDescriptors(X):
 
     descriptors = []
     
-    print "Calculating HOG descriptors for " , np.asarray(X).shape[0], "training images..."
+    print "\nCalculating HOG descriptors for " , len(X), "training images..."
     
     for img in X:
-        descriptors.append(hog(img, block_norm="L2", multichannel=True))
+        descriptors.append(hog(img, block_norm="L2", multichannel=True, visualize=False))
     
     print "Finished calculating HOG descriptors!"
     return np.asarray(descriptors)
