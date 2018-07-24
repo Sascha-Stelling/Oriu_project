@@ -39,7 +39,7 @@ def readImages(path, filetype):
     
     return images, numImages
     
-def transposeImage(images):
+def transposeImages(images):
     transp_imgs = []
     for img in images:
         transp_imgs.append(img.asnumpy().transpose(1,2,0))
@@ -74,4 +74,8 @@ def prepareLabels(labels):
     
 def showImage(img):
     plt.imshow(img, cmap="gray")
+    plt.show()
+    
+def showPlot(arr):
+    plt.plot(arr)
     plt.show()
