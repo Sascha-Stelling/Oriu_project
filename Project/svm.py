@@ -17,10 +17,12 @@ def svmClassification(X, y, desc):
 
 if __name__ == "__main__":
     X_train, y_train = extractImagesAndLabels("cifar-10-batches-py/", "data_batch_1")
+    X_test, y_test = extractImagesAndLabels("cifar-10-batches-py/", "test_batch")
     X_train = transposeImage(X_train)
     y_train = prepareLabels(y_train)
         
-    print len(y_train)
     desc = computeHOGDescriptors(X_train)
-    svmClassification(X_train, y_train, desc)
-    
+    clf = svmClassification(X_train, y_train, desc)
+        
+    y_predict = clf.predict(X_test)
+        
