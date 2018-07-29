@@ -1,0 +1,89 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+	\usetheme{Ilmenau}
+	\usecolortheme{default}
+	\usefonttheme{default}
+	\setbeamertemplate{navigation symbols}{}
+	\setbeamertemplate{caption}[numbered]
+	\setbeamertemplate{footline}[frame number]
+	\setbeamertemplate{itemize items}[circle]
+	\setbeamertemplate{enumerate items}[square]
+	\setbeamertemplate{section in toc}[circle]
+} 
+
+
+
+\author{Sascha Stelling}
+\title{Project: Image classification using CIFAR-10}
+\date{23.07.18}
+
+
+\begin{document}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Motivation}
+	\begin{itemize}
+		\item Classify images using HoG features and SVM
+		\item Classify again using CNN and softmax
+		\item Classify again using CNN and SVM
+		\item Compare results
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dataset: CIFAR-10}
+	\begin{itemize}
+		\item Labeled subset of the 80 million tiny images dataset
+		\item Contains 60.000 color images of size 32x32
+		\item Images are labeled as one out of 10 classes
+		\item Each class contains 6.000 images
+		\item 50.000 training and 10.000 test images
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Classification method}
+	\begin{itemize}
+		\item HoG and SVM
+		\begin{itemize}
+			\item Compute HoG features and let SVM classify them
+			\item SVM one vs all approach with linear kernel 
+		\end{itemize}
+		\item CNN with Softmax
+		\begin{itemize}
+			\item Let CNN learn the features by itself and use Softmax loss function for classification 
+		\end{itemize}
+		\item CNN with SVM
+		\begin{itemize}
+			\item Let CNN learn the features and use SVM for classification
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+	Some images and their computation results
+	\includegraphics[width=\linewidth]{imgs}
+\end{frame}
+
+\begin{frame}{Results}
+	Classification example
+	\includegraphics[width=\linewidth]{pics}
+	
+	
+	Accuracies
+	\includegraphics[width=\linewidth]{table}
+\end{frame}
+
+\begin{frame}{Evaluation}
+	\begin{itemize}
+		\item CNN+Softmax was expected to get the highest accuracy since it is a commonly used approach
+		\item CNN+SVM would be expected to get higher accuracy than HoG+SVM
+		\item HoG features seem to be better feature descriptor than simply learning them 
+	\end{itemize}
+\end{frame}
+
+\end{document}
